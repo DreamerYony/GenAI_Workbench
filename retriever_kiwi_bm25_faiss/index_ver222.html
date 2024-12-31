@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chatbot</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+<body>
+    <div class="container">
+        <h1> AI 엔젤이 도와드려요 🪽<span class="subtext">사내 챗봇 엔젤에게 물어보세요</span></h1> 
+        
+        <div class="chat-box" id="chat-box">
+            <!-- Chat messages -->
+            {% for chat in history %}
+            <div class="chat-message user">
+                <div class="message-label user">사용자</div>
+                <div class="message-bubble user">{{ chat.user }}</div> 
+            </div>
+            <div class="chat-message ai">
+                <div class="message-label ai">AI 엔젤🪽</div>
+                <div class="message-bubble ai">{{ chat.ai }}</div>
+            </div>
+            {% endfor %}
+        </div>
+            <!-- messages 입력 부분 -->
+        <form action="/ask" method="post">
+            <div class="input-container">
+                <textarea name="user_input" placeholder="메시지를 입력하세요" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </div>
+        </form>
+        <div class="quick-buttons">
+            <form action="/ask" method="post">
+                <button type="submit" name="user_input" value="이번주 회사 뉴스를 알려줘">📰 회사 뉴스</button>
+            </form>
+            <form action="/ask" method="post">
+                <button type="submit" name="user_input" value="오늘의 주식 정보를 알려줘">📈 주식 정보</button>
+            </form>
+            <form action="/ask" method="post">
+                <button type="submit" name="user_input" value="텍스트 요약을 도와줘">✍🏼 요약 작업</button>
+            </form>
+            <form action="/ask" method="post">
+                <button type="submit" name="user_input" value="엑셀 수식을 알려줘">📐 엑셀 수식</button>
+            </form>
+            <form action="/ask" method="post">
+                <button type="submit" name="user_input" value="오늘의 기상정보를 알려줘">🌞 기상 정보</button>
+            </form>
+            <form action="/ask" method="post">
+                <button type="submit" name="user_input" value="오늘의 메뉴를 알려줘">🍚 오늘의 메뉴</button>
+            </form>
+            <form action="/ask" method="post">
+                <button type="submit" name="user_input" value="베스트셀러를 추천해줘">📚 도서 추천</button>
+            </form>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
