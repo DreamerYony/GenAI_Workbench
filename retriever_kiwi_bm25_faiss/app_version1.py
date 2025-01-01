@@ -185,7 +185,7 @@ def extract_answer(output):
 @app.route("/")
 def index_ver2():
     if "history" not in session:
-    session["history"] = []
+        session["history"] = []
     return render_template("index_ver222.html", history=session["history"])
 
 @app.route("/ask", methods=["POST"])
@@ -197,7 +197,7 @@ def ask():
 
 def call_model(query):
     context = search_relevant_documents(query, top_k=3)
-    response = llm_generaate(query, context)
+    response = llm_generate(query, context)
     clean_response = extract_answer(response)
     return clean_response
 
